@@ -1,0 +1,37 @@
+<% @body_id = 'greeting-details' %>
+
+<%# cache cache_key_for_greeting do %>
+  <div data-hook="greeting_show" class="row">
+    <div class="col-md-4 col-sm-5" data-hook="greeting_left_part">
+      <div data-hook="greeting_left_part_wrap">
+        <div id="product-images" data-hook="greeting_images">
+          <div id="main-image" class="panel panel-default" data-hook>
+            <div class="panel-body text-center">
+				<%= image_tag(@greeting.greetingcard_picture) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 col-sm-7" data-hook="greeting_right_part">
+      <div data-hook="greeting_right_part_wrap">
+        <div id="product-description" data-hook="greeting_description">
+          <h1 class="product-title" itemprop="name"><%= @greeting.name %></h1>
+          <div data-hook="greeting_price" class="col-md-5"> 
+                 <div id="product-price"> 
+                   <h6 class="product-section-title"><%= Spree.t(:price) %></h6> 
+                  <div> 
+                     <span class="lead price selling" itemprop="price"> 
+                       <%= display_price(@greeting) %> 
+                     </span> 
+                     <!--<span itemprop="priceCurrency" content="<%#= @product.currency %>"></span> -->
+                   </div> 
+                 </div>
+             </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<%# end %>

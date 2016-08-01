@@ -1,0 +1,25 @@
+<script type='text/template' id='greeting_template'>
+  <li id='greeting_{{ greeting.id }}' data-greetingcard-id='{{ greeting.id }}' data-taxons="{{ greeting.taxon_ids }}" class='greeting'>
+    <a class="sort-handle js-sort-handle"><span class="icon icon-move"></span></a>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" data-hook="taxon_greeting_dropdown">
+        <li><a href="javascript:;" class="edit-greeting js-edit-greeting"><%= Spree.t(:edit) %></a></li>
+        <li><a href="javascript:;" class="delete-greeting js-delete-greeting"><%= Spree.t(:delete_from_taxon) %></a></li>
+      </ul>
+    </div>
+    //<div class='image'>
+      //{{#if greeting.image }}
+        //<img src='{{greeting.image}}' alt='{{ greeting.name }}' class='thumbnail' />
+      //{{ else }}
+        //<img src='<%= image_path("noimage/small.png") %>' alt='{{greeting.name }}' class='thumbnail' />
+      //{{/if}}
+    //</div>
+    <div class="greeting-info">
+      <div class="name">{{ greeting.name }}</div>
+      <div class="price">{{ greeting.display_price }}</div>
+    </div>
+  </li>
+</script>

@@ -1,0 +1,27 @@
+<% if "spree/greetings" == params[:controller] && @taxon || @taxonomies.present? %>
+  <% content_for :sidebar do %>
+    <div data-hook="homepage_sidebar_navigation">
+      <% if "spree/greetings" == params[:controller] && @taxon %>
+        <%= render :partial => 'spree/shared/filters' %>
+      <% else %>
+        <%= render :partial => 'spree/shared/taxonomies' %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if params[:keywords] %>
+  <div data-hook="search_results">
+    <% if @greetings.empty? %>
+      <h6 class="search-results-title"><%= Spree.t(:no_greetings_found) %></h6>
+    <% else %>
+      <%= render :partial => 'spree/shared/greetings', :locals => { :greetings => @greetings, :taxon => @taxon } %>
+    <% end %>
+  </div>
+<% else %>
+  <div data-hook="homepage_greetings">
+	  <%# cache(cache_key_for_greetings) do %>
+      <%= render :partial => 'spree/shared/greetings', :locals => { :greetings => @greetings, :taxon => @taxon } %>
+    <%# end %>
+  </div>
+<% end %>

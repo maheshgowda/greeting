@@ -1,0 +1,21 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:greetings), admin_greetings_path %> /
+  <%= @greeting.name %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <ul class="nav nav-pills nav-stacked" data-hook="admin_greeting_tabs">
+    <%= content_tag :li, class: ('active' if current == :details) do %>
+      <%= link_to_with_icon 'edit', Spree.t(:details), edit_admin_greeting_url(@greeting) %>
+    <% end if can?(:admin, Spree::Greeting) %>
+    <%#= content_tag :li, class: ('active' if current == :variants) do %>
+      <%#= link_to_with_icon 'th-large', Spree.t(:variants),  spree.admin_greeting_variants_url(@greeting) %>
+    <%# end if can?(:admin, Spree::Variant) %>
+    <%= content_tag :li, class: ('active' if current == :stock) do %>
+      <%= link_to_with_icon 'home', Spree.t(:stock), stock_admin_greeting_url(@greeting) %>
+    <% end if can?(:stock, Spree::Greeting) %>
+    <%= content_tag :li, class: ('active' if current == :greeting_preview) do %>
+      <%= link_to_with_icon 'home', Spree.t(:greeting_preview), greeting_preview_admin_greeting_url(@greeting) %>
+    <% end if can?(:greeting_preview, Spree::Greeting) %>
+  </ul>
+<% end %>
