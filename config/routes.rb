@@ -2,7 +2,7 @@ Spree::Core::Engine.routes.draw do
   # Add your extension routes here
   Spree::Core::Engine.add_routes do
         
-        resources :greetings, only: [:index, :show] 
+        resources :greetings, only: [:index] 
          
         namespace :admin do
           
